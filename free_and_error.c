@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_and_error.c                                :+:      :+:    :+:   */
+/*   free_and_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 12:45:31 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/12 17:09:24 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/13 18:48:41 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	ft_free_stack(t_stack **stack)
 	t_stack	*first;
 	t_stack	*next_node;
 
+	if (!(*stack))
+	{
+		free (*stack);
+		return ;
+	}
 	current = (*stack)->next;
 	first = *stack;
 	while (current != first)
@@ -27,6 +32,7 @@ void	ft_free_stack(t_stack **stack)
 		current = next_node;
 	}
 	free(first);
+	return ;
 }
 
 void	ft_error(char **tab, t_stack **stack)
