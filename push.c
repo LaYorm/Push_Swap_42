@@ -6,7 +6,7 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 11:56:51 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/13 19:09:37 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/14 14:58:32 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	ft_push_a(t_stack **stack_a, t_stack **stack_b)
 		last_a->next = node_to_push;
 	}
 	(*stack_a) = node_to_push;
+	write(1, "pa\n", 1);
 	return ;
 }
 
@@ -87,5 +88,6 @@ void	ft_push_b(t_stack **stack_a, t_stack **stack_b)
 		last_b->next = node_to_push;
 	}
 	(*stack_b) = node_to_push;
+	write(1, "pb\n", 3);
 	return ;
 }

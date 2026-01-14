@@ -6,7 +6,7 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:52:44 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/13 19:09:42 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/14 14:54:58 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_error(char **tab, t_stack **stack);
 void	ft_free_stack(t_stack **stack);
 
 /*---------swap.c-------------*/
+void	ft_swap(t_stack *stack);
 void	ft_swap_a(t_stack *stack_a);
 void	ft_swap_b(t_stack *stack_b);
 void	ft_s_swap(t_stack *stack_a, t_stack *stack_b);
@@ -67,5 +68,17 @@ void	ft_push_a(t_stack **stack_a, t_stack **stack_b);
 void	ft_set_b_after_extract(t_stack **stack_b);
 void	ft_push_b(t_stack **stack_a, t_stack **stack_b);
 void	ft_set_a_after_extract(t_stack **stack_a);
+
+/*---------rotate.c-------------*/
+void	ft_rotate(t_stack **stack);
+void	ft_rotate_a(t_stack **stack_a);
+void	ft_rotate_b(t_stack **stack_b);
+void	ft_r_rotate(t_stack **stack_a, t_stack **stack_b);
+
+/*---------reverse_rotate.c-------------*/
+void	ft_reverse_rotate(t_stack **stack);
+void	ft_reverse_rotate_a(t_stack **stack_a);
+void	ft_reverse_rotate_b(t_stack **stack_b);
+void	ft_r_reverse_rotate(t_stack **stack_a, t_stack **stack_b);
 
 #endif
