@@ -6,11 +6,22 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 16:20:28 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/13 11:03:20 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/15 12:04:12 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_initiate_stack(t_stack *new_node, int val)
+{
+	new_node->value = val;
+	new_node->cost_a = 0;
+	new_node->cost_b = 0;
+	new_node->target_node = NULL;
+	new_node->index = 0;
+	new_node->above_median = 0;
+	return ;
+}
 
 void	ft_add_to_stack(char **tab, t_stack **stack, int val)
 {
@@ -20,7 +31,7 @@ void	ft_add_to_stack(char **tab, t_stack **stack, int val)
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		ft_error(tab, stack);
-	new_node->value = val;
+	ft_initiate_stack(new_node, val);
 	if (*stack == NULL)
 	{
 		*stack = new_node;

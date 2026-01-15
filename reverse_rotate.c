@@ -6,7 +6,7 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:23:22 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/14 14:52:31 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/15 11:34:18 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	ft_reverse_rotate(t_stack **stack)
 void	ft_reverse_rotate_a(t_stack **stack_a)
 {
 	ft_reverse_rotate(stack_a);
-	write(1, "rra\n",4);
+	write(1, "rra\n", 4);
 	return ;
 }
 
 void	ft_reverse_rotate_b(t_stack **stack_b)
 {
 	ft_reverse_rotate(stack_b);
-	write(1, "rrb\n",4);
+	write(1, "rrb\n", 4);
 	return ;
 }
 

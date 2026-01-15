@@ -6,7 +6,7 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 11:02:59 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/14 14:54:35 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/15 11:34:12 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	ft_swap(t_stack *stack)
 void	ft_swap_a(t_stack *stack_a)
 {
 	ft_swap(stack_a);
-	write(1,"sa\n", 3);
+	write(1, "sa\n", 3);
 	return ;
 }
 
 void	ft_swap_b(t_stack *stack_b)
 {
 	ft_swap(stack_b);
-	write(1,"sb\n", 3);
+	write(1, "sb\n", 3);
 	return ;
 }
 
