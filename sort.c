@@ -6,97 +6,72 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:13:13 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/15 13:52:17 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/16 18:44:04 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stack_size(t_stack *stack)
+t_stack	*ft_find_max(t_stack *stack)
 {
-	int		size_stack;
-	t_stack	*current_node;
+	t_stack	*max_node;
+	int		i;
+	int		max;
 
 	if (!stack)
-		return (0);
-	size_stack = 1;
-	current_node = stack->next;
-	while (current_node != stack)
+		return (NULL);
+	max = stack->value;
+	max_node = stack;
+	i = 0;
+	while (i < 3)
 	{
-		size_stack++;
-		current_node = current_node->next;
+		if (max < stack->value)
+		{
+			max_node = stack;
+			max = stack->value;
+		}
+		i++;
+		stack = stack->next;
 	}
-	return (size_stack);
+	return (max_node);
 }
 
-void	ft_set_index(t_stack **stack)
+void	ft_sort_three(t_stack **stack_a)
 {
-	t_stack	*current_node;
-	int		index;
+	t_stack	*max;
 
-	if (!(*stack))
-		return ;
-	current_node = (*stack)->next;
-	index = 1;
-	while (current_node != (*stack))
-	{
-		current_node->index = index;
-		index++;
-		current_node = current_node->next;
-	}
-	(*stack)->index = 0;
+	max = ft_find_max(*stack_a);
+	if (*stack_a == max)
+		ft_rotate_a(stack_a);
+	if ((*stack_a)->next == max)
+		ft_reverse_rotate_a(stack_a);
+	if ((*stack_a)->value > (*stack_a)->next->value)
+		ft_swap_a(*stack_a);
 	return ;
 }
 
-void	ft_median(t_stack **stack, int size_stack)
+int	ft_sort_small_pile(t_stack **stack_a, int size)
 {
-	t_stack	*curr_node;
-	int		median;
-
-	if (!(*stack))
-		return ;
-	curr_node = (*stack);
-	median = size_stack / 2;
-	while (size_stack--)
+	if (size <= 3)
 	{
-		if (curr_node->index <= median)
-			curr_node->above_median = 1;
-		else
-			curr_node->above_median = 0;
-		curr_node = curr_node->next;
+		if (size == 2 && (*stack_a)->value > (*stack_a)->next->value)
+			ft_swap_a(*stack_a);
+		else if (size == 3)
+			ft_sort_three(stack_a);
+		return (1);
 	}
-	return ;
-}
-
-void	ft_set_cost(t_stack **stack_a, int size_a, int size_b)
-{
-	t_stack	*curr_node;
-	int		save_size_a;
-
-	if (!(*stack_a))
-		return ;
-	curr_node = (*stack_a);
-	save_size_a = size_a;
-	while (size_a--)
-	{
-		if (curr_node->above_median)
-			curr_node->cost_a = curr_node->index;
-		if (!curr_node->above_median)
-			curr_node->cost_a = save_size_a - curr_node->index;
-		if (curr_node->target_node->above_median)
-			curr_node->cost_b = curr_node->target_node->index;
-		if (!curr_node->target_node->above_median)
-			curr_node->cost_b = size_b - curr_node->target_node->index;
-		curr_node = curr_node->next;
-	}
-	return ;
+	return (0);
 }
 
 void	ft_sorting_algo(t_stack **stack_a, t_stack **stack_b)
 {
-	int	size_stack_a;
-	int	size_stack_b;
+	t_stack	*node_to_move;
+	int		size_stack_a;
+	int		size_stack_b;
 
+	size_stack_a = ft_stack_size(*stack_a);
+	if (ft_sort_small_pile(stack_a, size_stack_a))
+		return ;
 	ft_push_b(stack_a, stack_b);
 	ft_push_b(stack_a, stack_b);
 	size_stack_a = ft_stack_size(*stack_a);
@@ -107,9 +82,23 @@ void	ft_sorting_algo(t_stack **stack_a, t_stack **stack_b)
 		ft_set_index(stack_b);
 		ft_median(stack_a, size_stack_a);
 		ft_median(stack_b, size_stack_b);
-		ft_find_target(stack_a, stack_b, size_stack_a);
+		ft_find_target_a(stack_a, stack_b, size_stack_a);
 		ft_set_cost(stack_a, size_stack_a, size_stack_b);
-		ft_find_move_cheapest(stack_a, stack_b, size_stack_a);
+		node_to_move = ft_find_cheapest(stack_a, size_stack_a);
+		ft_mv_cheapest(stack_a, stack_b, node_to_move);
 		size_stack_a = ft_stack_size(*stack_a);
 	}
+	ft_sort_small_pile(stack_a, size_stack_a);
+	while ((*stack_b))
+	{
+		size_stack_a = ft_stack_size(*stack_a);
+		size_stack_b = ft_stack_size(*stack_b);
+		ft_set_index(stack_a);
+		ft_set_index(stack_b);
+		ft_median(stack_a, size_stack_a);
+		ft_median(stack_b, size_stack_b);
+		ft_find_target_b(stack_a, stack_b, size_stack_b);
+		ft_move_to_a(stack_a, stack_b);
+	}
+	
 }

@@ -6,7 +6,7 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:52:44 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/15 13:50:16 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/16 18:32:12 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ void	ft_s_swap(t_stack *stack_a, t_stack *stack_b);
 
 /*---------push.c-------------*/
 void	ft_push_a(t_stack **stack_a, t_stack **stack_b);
-void	ft_set_b_after_extract(t_stack **stack_b);
+void	ft_set_after_extract(t_stack **stack_b);
 void	ft_push_b(t_stack **stack_a, t_stack **stack_b);
-void	ft_set_a_after_extract(t_stack **stack_a);
 
 /*---------rotate.c-------------*/
 void	ft_rotate(t_stack **stack);
@@ -87,19 +86,35 @@ void	ft_reverse_rotate_a(t_stack **stack_a);
 void	ft_reverse_rotate_b(t_stack **stack_b);
 void	ft_r_reverse_rotate(t_stack **stack_a, t_stack **stack_b);
 
-/*--------sort.c-------------*/
+/*--------prepare_for_sort.c-------------*/
 int		ft_stack_size(t_stack *stack);
 void	ft_set_index(t_stack **stack);
-void	ft_sorting_algo(t_stack **stack_a, t_stack **stack_b);
 void	ft_set_cost(t_stack **stack_a, int size_a, int size_b);
+void	ft_median(t_stack **stack, int size_stack);
 
-/*--------find_target.c-------------*/
-void	ft_find_target(t_stack **stack_a, t_stack **stack_b, int size_stack);
+/*--------sort.c-------------*/
+void	ft_sorting_algo(t_stack **stack_a, t_stack **stack_b);
+int		ft_sort_small_pile(t_stack **stack_a, int size);
+void	ft_sort_three(t_stack **stack_a);
+t_stack	*ft_find_max(t_stack *stack);
+
+/*--------find_target_a.c-------------*/
+void	ft_find_target_a(t_stack **stack_a, t_stack **stack_b, int size_stack);
+void	ft_find_target_b(t_stack **stack_a, t_stack **stack_b, int size_stack);
 t_stack	*ft_get_bigger_small(int value, t_stack *stack_b);
 t_stack	*ft_is_extrem(int value, t_stack *stack_b);
 
-/*---------cheapest_and_move.c-------------*/
-long	ft_cost_if_median(t_stack **stack_a, t_stack *curr_node, long cost);
-void	ft_find_move_cheapest(t_stack **stack_a, t_stack **stack_b, int size_a);
+/*--------find_target_b.c-------------*/
+t_stack	*ft_get_smallest_big(int value, t_stack *stack);
+void	ft_find_target_b(t_stack **stack_a, t_stack **stack_b, int size_stack);
+t_stack	*ft_find_min(t_stack *stack);
+
+/*---------find_cheapest.c-------------*/
+long	ft_cost_if_median(t_stack *curr_node);
+t_stack	*ft_find_cheapest(t_stack **stack_a, int size_a);
+
+/*---------move_from_stack.c-------------*/
+void	ft_mv_cheapest(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest);
+void	ft_move_to_a(t_stack **stack_a, t_stack **stack_b);
 
 #endif

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_target.c                                      :+:      :+:    :+:   */
+/*   find_target_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 11:32:53 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/15 11:33:20 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/16 18:04:02 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_is_extrem(int value, t_stack *stack_b)
+t_stack	*ft_is_extrem(int value, t_stack *stack)
 {
 	t_stack	*max;
 	t_stack	*min;
@@ -20,11 +20,11 @@ t_stack	*ft_is_extrem(int value, t_stack *stack_b)
 	int		size_stack;
 	int		i;
 
-	size_stack = ft_stack_size(stack_b);
+	size_stack = ft_stack_size(stack);
 	i = 0;
-	max = stack_b;
-	min = stack_b;
-	current_node = stack_b;
+	max = stack;
+	min = stack;
+	current_node = stack;
 	while (i < size_stack)
 	{
 		if (current_node->value > max->value)
@@ -41,33 +41,33 @@ t_stack	*ft_is_extrem(int value, t_stack *stack_b)
 	return (NULL);
 }
 
-t_stack	*ft_get_bigger_small(int value, t_stack *stack_b)
+t_stack	*ft_get_bigger_small(int value, t_stack *stack)
 {
-	t_stack	*curr_b;
+	t_stack	*curr;
 	int		size_stack;
 	int		i;
 	t_stack	*target;
 	long	big_small;
 
-	size_stack = ft_stack_size(stack_b);
+	size_stack = ft_stack_size(stack);
 	i = 0;
-	curr_b = stack_b;
+	curr = stack;
 	target = NULL;
 	big_small = -2147483649;
 	while (i < size_stack)
 	{
-		if (value > curr_b->value && curr_b->value > big_small)
+		if (value > curr->value && curr->value > big_small)
 		{
-			target = curr_b;
-			big_small = curr_b->value;
+			target = curr;
+			big_small = curr->value;
 		}
 		i++;
-		curr_b = curr_b->next;
+		curr = curr->next;
 	}
 	return (target);
 }
 
-void	ft_find_target(t_stack **stack_a, t_stack **stack_b, int size_stack)
+void	ft_find_target_a(t_stack **stack_a, t_stack **stack_b, int size_stack)
 {
 	t_stack	*curr_a;
 	t_stack	*extrem;
@@ -87,4 +87,5 @@ void	ft_find_target(t_stack **stack_a, t_stack **stack_b, int size_stack)
 		i++;
 		curr_a = curr_a->next;
 	}
+	return ;
 }
