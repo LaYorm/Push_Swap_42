@@ -6,7 +6,7 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:52:44 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/16 18:32:12 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/19 11:42:52 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,16 @@ void	ft_set_index(t_stack **stack);
 void	ft_set_cost(t_stack **stack_a, int size_a, int size_b);
 void	ft_median(t_stack **stack, int size_stack);
 
+/*--------sort_small.c-------------*/
+void	ft_sort_three(t_stack **stack_a);
+int		ft_sort_small_pile(t_stack **stack_a, int size);
+t_stack	*ft_find_max(t_stack *stack);
+
 /*--------sort.c-------------*/
 void	ft_sorting_algo(t_stack **stack_a, t_stack **stack_b);
-int		ft_sort_small_pile(t_stack **stack_a, int size);
-void	ft_sort_three(t_stack **stack_a);
-t_stack	*ft_find_max(t_stack *stack);
+void	ft_bring_min_to_top(t_stack **stack_a);
+int		ft_a_to_b(t_stack **stack_a, t_stack **stack_b);
+void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b);
 
 /*--------find_target_a.c-------------*/
 void	ft_find_target_a(t_stack **stack_a, t_stack **stack_b, int size_stack);
