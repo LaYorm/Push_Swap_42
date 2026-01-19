@@ -6,7 +6,7 @@
 /*   By: yorimek <yorimek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 16:13:13 by yorimek           #+#    #+#             */
-/*   Updated: 2026/01/19 12:11:07 by yorimek          ###   ########.fr       */
+/*   Updated: 2026/01/19 16:53:57 by yorimek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_bring_min_to_top(t_stack **stack_a)
 	min = ft_find_min(*stack_a);
 	while ((*stack_a) != min)
 	{
+		ft_set_index(stack_a);
 		ft_median(stack_a, ft_stack_size(*stack_a));
 		if (min->above_median)
 			ft_rotate_a(stack_a);
