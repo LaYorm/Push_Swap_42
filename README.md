@@ -44,7 +44,7 @@ make fclean
 * This article helped me to understand the Turkish algorithm that i used to sort the data : [Turkish Algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97).
 * This article help me to understand and use [Circular Doubly Linked List](http://sdz.tdct.org/sdz/les-listes-circulaires-doublement-chainees-en-c.html).
 
-###Use of AI
+### Use of AI
 I used AI on this project to help me on a few tasks:
 * **Debugging**: Identifying logic errors in the main sorting loop (specifically ensuring exactly 3 elements remain in stack A) and fixing Makefile syntax errors.
 * **Guidance & Direction**: Providing a roadmap for the project's advancement, helping in understanding the most efficient "cost calculation" strategy.
