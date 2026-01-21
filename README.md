@@ -48,3 +48,13 @@ make fclean
 I used AI on this project to help me on a few tasks:
 * **Debugging**: Identifying logic errors in the main sorting loop (specifically ensuring exactly 3 elements remain in stack A) and fixing Makefile syntax errors.
 * **Guidance & Direction**: Providing a roadmap for the project's advancement, helping in understanding the most efficient "cost calculation" strategy.
+
+## Technical Choices
+
+### Why Circular Doubly Linked Lists?
+
+I chose to implement the stacks using a **Circular Doubly Linked List** for several reasons:
+
+* **Efficient Rotations**: Operations like `ra`, `rb`, `rra`, and `rrb` are extremely fast. In a circular list, rotating the stack only requires moving the `head` pointer to the next or previous node.
+* **Bi-directional Traversal**: The "doubly" aspect allows me to move through the stack in both directions. This is essential for the **Turk Algorithm** to calculate whether it is cheaper to move an element to the top via `rotate` or `reverse rotate`.
+* **Direct Access to Tail**: Having a `prev` pointer on the `head` node gives instant access to the last element of the stack.
